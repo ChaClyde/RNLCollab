@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useHeader } from "../contexts/HeaderContext";
 import { useSidebar } from "../contexts/SidebarContext"
 
@@ -44,7 +45,7 @@ const AppHeader = () => {
                             </button>
                             <a href="https://flowbite.com" className="flex ms-2 md:me-24">
                                 <img src="https://flowbite.com/docs/images/logo.svg" className="h-6 me-3" alt="FlowBite Logo" />
-                                <span className="self-center text-lg text-white font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                                <span className="self-center text-lg text-white font-semibold whitespace-nowrap dark:text-white">FilSched</span>
                             </a>
                         </div>
                         <div className="flex items-center">
@@ -77,14 +78,14 @@ const AppHeader = () => {
                                     id="dropdown-user">
                                     <div className="px-4 py-3 border-b border-default-medium" role="none">
                                         <p className="text-sm font-medium text-heading" role="none">
-                                            Neil Sims
+                                            Super Admin
                                         </p>
                                         <p className="text-sm text-body truncate" role="none">
-                                            neil.sims@flowbite.com
+                                            superAdmin@gmail.com
                                         </p>
                                     </div>
                                     <ul className="p-2 text-sm text-body font-medium " role="none">
-                                        <li>
+                                        {/* <li>
                                             <a href="#" className="inline-flex items-center w-full p-2 rounded-lg hover:bg-linear-to-r from-blue-100 to-blue-900 hover:text-black hover:text-heading" role="menuitem">Dashboard</a>
                                         </li>
                                         <li>
@@ -92,9 +93,9 @@ const AppHeader = () => {
                                         </li>
                                         <li>
                                             <a href="#" className="inline-flex items-center w-full p-2 rounded-lg hover:bg-blue-500/50 hover:text-heading" role="menuitem">Earnings</a>
-                                        </li>
+                                        </li> */}
                                         <li>
-                                            <a href="#" className="inline-flex items-center w-full p-2 rounded-lg hover:bg-blue-500/50 hover:text-heading" role="menuitem">Sign out</a>
+                                            <Link to="#" className="inline-flex items-center w-full p-2 rounded-lg hover:bg-blue-500/50 hover:text-heading" role="menuitem">Sign out</Link>
                                         </li>
                                     </ul>
                                 </div>
