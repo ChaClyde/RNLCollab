@@ -23,7 +23,7 @@ const SubmitButton: FC<SubmitButtonProps> = ({
                 {label}
             </button>
         </>
-    )
-}
+    );
+};
 
-export default SubmitButton
+export default SubmitButton;
