@@ -1,16 +1,21 @@
 import type { FC } from "react";
+import Spinner from "../Spinner/Spinner";
 
 interface SubmitButtonProps {
     label: string;
     newClassName?: string;
     className?: string;
+    loading?: boolean;
+    loadingLabel?: string
 
 }
 
 const SubmitButton: FC<SubmitButtonProps> = ({
     label,
     newClassName,
-    className
+    className,
+    loading,
+    loadingLabel
 }) => {
     return (
         <>
@@ -19,8 +24,19 @@ const SubmitButton: FC<SubmitButtonProps> = ({
                     ? newClassName
                     : `px-4 py-3 bg-green-500 hover:bg-green-800 hover:border-gray-200 text-white font-medium cursor-pointer rounded-lg shadow-lg 
                 ${className}`
-                }`}>
-                {label}
+                }`}
+                disabled={loading}
+            >
+                {loading ? (
+                    <>
+                        <div className="flex gap-1">
+                            <div>{<Spinner size="xs" />}</div>
+                            {loadingLabel}
+                        </div>
+                    </>
+                ) : (
+                    label
+                )}
             </button>
         </>
     );
