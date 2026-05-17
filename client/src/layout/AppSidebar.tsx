@@ -28,7 +28,15 @@ const AppSidebar = () => {
                     
                 },
                 {
+                    text: "Department / Office",
+                    path: "/users",
+                },
+                {
                     text: "All Users",
+                    path: "/users",
+                },
+                {
+                    text: "Activity Logs",
                     path: "/users",
                 },
             ],
@@ -49,7 +57,7 @@ const AppSidebar = () => {
                 ${isOpen ? "-translate-x-full" : "translate-x-0"}
                 sm:translate-x-0`}
             >
-                <div className="h-full px-3 py-20 overflow-y-auto bg-blue-950">
+                <div className="h-full px-3 py-20 overflow-y-auto bg-gray-950">
 
                     <ul className="space-y-2 font-medium">
 
@@ -60,7 +68,7 @@ const AppSidebar = () => {
                                 {!item.children && (
                                     <Link
                                         to={item.path}
-                                        className="flex items-center px-2 py-1.5 text-blue-200 rounded-lg hover:bg-blue-800"
+                                        className="flex items-center px-2 py-1.5 text-white rounded-lg hover:bg-blue-800"
                                     >
                                         <span>{item.text}</span>
                                     </Link>
@@ -74,8 +82,8 @@ const AppSidebar = () => {
                                             className="
                                                 w-full flex items-center justify-between
                                                 px-2 py-1.5
-                                                text-blue-200 rounded-lg
-                                                hover:bg-blue-800
+                                                text-white rounded-lg
+                                                hover:bg-gray-800
                                             "
                                         >
                                             <span>{item.text}</span>
@@ -110,7 +118,7 @@ const AppSidebar = () => {
                                                         to={child.path}
                                                         className="
                                                             block pl-8 py-2 text-sm
-                                                            text-blue-200
+                                                            text-gray-100
                                                             hover:bg-blue-800
                                                             rounded-lg
                                                         "
@@ -131,4 +139,4 @@ const AppSidebar = () => {
     )
 }
 
-export default AppSidebar
+export default AppSidebar;

@@ -68,7 +68,7 @@ const AppHeader = () => {
                                         />
                                     </button>
                                 </div>
-                                <div className={`absolute right-8 top-9 min-w-[200px] z-50
+                                <div className={`absolute right-8 top-9 min-w-50 z-50
                                 ${isOpen
                                         ? "block"
                                         : "hidden"
