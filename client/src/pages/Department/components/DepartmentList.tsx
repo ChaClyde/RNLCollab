@@ -4,6 +4,7 @@ import Spinner from "../../../components/Spinner/Spinner";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "../../../components/Table"
 import type { DepartmentsColumns } from "../../../interfaces/DepartmentColumns";
 import DepartmentService from "../../../services/DepartmentService";
+import { Link } from "react-router-dom";
 
 interface DepartmentListProps {
     refreshKey: boolean
@@ -57,6 +58,16 @@ const DepartmentList: FC<DepartmentListProps> = ({refreshKey}) => {
                                     <TableCell className="px-4 py-3 text-center">{index + 1}</TableCell>
                                     <TableCell className="px-4 py-3 text-center">{department.department_name}</TableCell>
                                     <TableCell className="px-4 py-3 text-center">{department.status}</TableCell>
+                                    <TableCell className="px-4 py-3 text-center">
+                                        <div className="flex justify-center items-center">
+                                            <Link to={`/departments/edit/${department.department_id}`} className="text-green-600 font-medium hover:underline">
+                                                Edit
+                                            </Link>
+                                            {/* <Link to={`/roles-permissions/delete/${role.role_id}`} className="text-red-600 hover:underline">
+                                               Delete
+                                           </Link> */}
+                                        </div>
+                                    </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

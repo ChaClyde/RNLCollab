@@ -17,6 +17,14 @@ const DepartmentService = {
             throw error;
         }
     },
+    getDepartment: async (departmentId: string | number) => {
+        try {
+            const response = await AxiosInstance.get(`/department/getDepartment/${departmentId}`);
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    },
 }
 
 export default DepartmentService;

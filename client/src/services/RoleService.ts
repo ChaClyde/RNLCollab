@@ -17,6 +17,14 @@ const RoleService = {
             throw error;
         }
     },
+    getRole: async (roleId: string | number) => {
+        try {
+            const response = await AxiosInstance.get(`/role/getRole/${roleId}`);
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    },
 };
 
 export default RoleService;

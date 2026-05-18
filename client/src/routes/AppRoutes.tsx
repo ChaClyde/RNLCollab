@@ -16,12 +16,12 @@ const AppRoutes = () => {
             <Routes>
                 <Route element={<AppLayout />}>
                     <Route path="/roles-permissions" element={<RolePage />} />
-                    <Route path="/roles-permissions/edit" element={<EditRolePage />} />
+                    <Route path="/roles-permissions/edit/:role_id" element={<EditRolePage />} />
                     <Route path="/roles-permissions/delete" element={<DeleteRolePage />} />
 
                     {/* Department */}
                     <Route path="/departments" element={<DepartmentPage />} />
-                    <Route path="/departments/edit" element={<EditDepartmentPage />} />
+                    <Route path="/departments/edit/:department_id" element={<EditDepartmentPage />} />
                     <Route path="/departments/delete" element={<DeleteDepartmentPage />} />
 
                     {/* Users */}

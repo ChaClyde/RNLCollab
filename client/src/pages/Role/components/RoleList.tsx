@@ -3,6 +3,8 @@ import { Table, TableBody, TableCell, TableHeader, TableRow } from "../../../com
 import type { RoleColumns } from "../../../interfaces/RoleColumns";
 import RoleService from "../../../services/RoleService";
 import Spinner from "../../../components/Spinner/Spinner";
+import { Link } from "react-router-dom";
+import type { Underline } from "lucide-react";
 
 interface RoleListProps {
     refreshKey: boolean
@@ -57,6 +59,16 @@ const RoleList:FC<RoleListProps> = ({refreshKey}) => {
                                     <TableCell className="px-4 py-3 text-center">{index + 1}</TableCell>
                                    <TableCell className="px-4 py-3 text-start">{role.role_name}</TableCell>
                                    <TableCell className="px-4 py-3 text-center">{role.status}</TableCell>
+                                   <TableCell className="px-4 py-3 text-center">
+                                    <div className="flex justify-center items-center">
+                                           <Link to={`/roles-permissions/edit/${role.role_id}`} className="text-green-600 font-medium hover:underline">
+                                           Edit
+                                           </Link>
+                                           {/* <Link to={`/roles-permissions/delete/${role.role_id}`} className="text-red-600 hover:underline">
+                                               Delete
+                                           </Link> */}
+                                    </div>
+                                   </TableCell>
                                 </TableRow>
                            )) }
                         </TableBody>

@@ -1,8 +1,15 @@
+import { useState } from "react";
 import BackButton from "../../../components/Button/BackButton"
 import SubmitButton from "../../../components/Button/SubmitButton"
 import FloatingLabelInput from "../../../components/Input/FloatingLabelInput"
+import type { DepartmentFieldErrors } from "../../../interfaces/DepartmentFieldsErrors";
 
 const EditDepartmentForm = () => {
+    const [loadingGet, setLoadingGet] = useState(false);
+        const [loadingUpdate, setLoadingUpdate] = useState(false);
+        const [department, getDepartment] = useState("");
+        const [errors, setErrors] = useState<DepartmentFieldErrors>({});
+
     return (
         <>
             <form>

@@ -35,11 +35,15 @@ const AppSidebar = () => {
                     text: "All Users",
                     path: "/users",
                 },
-                {
-                    text: "Activity Logs",
-                    path: "/users",
-                },
             ],
+        },
+        {
+            text: "Activity Logs",
+            path: "/users",
+        },
+        {
+            text: "Trash",
+            path: "/users",
         },
     ]
 
@@ -68,7 +72,7 @@ const AppSidebar = () => {
                                 {!item.children && (
                                     <Link
                                         to={item.path}
-                                        className="flex items-center px-2 py-1.5 text-white rounded-lg hover:bg-blue-800"
+                                        className="flex items-center px-2 py-1.5 text-white rounded-lg hover:bg-gray-800"
                                     >
                                         <span>{item.text}</span>
                                     </Link>
@@ -119,7 +123,7 @@ const AppSidebar = () => {
                                                         className="
                                                             block pl-8 py-2 text-sm
                                                             text-gray-100
-                                                            hover:bg-blue-800
+                                                            hover:bg-gray-800
                                                             rounded-lg
                                                         "
                                                     >

@@ -13,7 +13,7 @@ const AppHeader = () => {
                     onClick={toggleUserMenu}
                 />
             )}
-            <nav className="fixed top-0 z-50 w-full bg-blue-950 border-b border-default">
+            <nav className="fixed top-0 z-50 w-full bg-gray-950 border-b border-default">
                 <div className="px-3 py-3 lg:px-5 lg:pl-3">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center justify-start rtl:justify-end">
@@ -43,10 +43,11 @@ const AppHeader = () => {
                                     />
                                 </svg>
                             </button>
-                            <a href="https://flowbite.com" className="flex ms-2 md:me-24">
+                            {/* <a href="https://flowbite.com" className="flex ms-2 md:me-24">
                                 <img src="https://flowbite.com/docs/images/logo.svg" className="h-6 me-3" alt="FlowBite Logo" />
                                 <span className="self-center text-lg text-white font-semibold whitespace-nowrap dark:text-white">FilSched</span>
-                            </a>
+                            </a> */}
+                            <span className="self-center text-lg text-white font-semibold whitespace-nowrap dark:text-white">FilSched</span>
                         </div>
                         <div className="flex items-center">
                             <div className="flex items-center ms-3">
