@@ -6,11 +6,13 @@ import type { DepartmentFieldErrors } from "../../../interfaces/DepartmentFields
 
 interface AddDepartmentFormProps {
     onDepartmentAdded: (message: string) => void
+    refreshKey: () => void
 
 }
 
 const AddDepartmentForm: FC<AddDepartmentFormProps> = ({
-    onDepartmentAdded
+    onDepartmentAdded,
+    refreshKey,
 }) => {
     const [loadingStore, setLoadingStore] = useState(false)
     const [departmentName, setdepartmentName] = useState('')
@@ -29,7 +31,9 @@ const AddDepartmentForm: FC<AddDepartmentFormProps> = ({
                 setdepartmentName("");
                 setDescription("");
                 setErrors({});
-                onDepartmentAdded(res.data.message)
+
+                onDepartmentAdded(res.data.message);
+                refreshKey()
             } else {
                 console.error('Unexpected error occured during store role: ', res.data)
             }

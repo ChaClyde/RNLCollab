@@ -1,32 +1,29 @@
-import { useState } from "react"
+
 import AddDepartmentForm from "./components/AddDepartmentForm"
 import DepartmentList from "./components/DepartmentList"
 import ToastMessage from "../../components/ToastMessage/ToastMessage"
+import { useToastMessage } from "../../hooks/useToastMessage"
+import { useRefresh } from "../../hooks/useRefresh"
 
 const DepartmentPage = () => {
-  const [toastMessage, setToastMessage] = useState('')
-  const [toastMessageIsVisible, setToastMessageIsVisible] = useState(false)
+  const {
+    message: toastMessage,
+    isVisible: toastMessageIsVisible,
+    showToastMessage,
+    closeToastMessage,
+  } = useToastMessage("", false);
 
-  const handleShowToastMessage = (message: string) => {
-    setToastMessage(message)
-    setToastMessageIsVisible(true)
-  }
+  const { refresh, handleRefresh } = useRefresh(false);
 
-  const handleCloseToastMessage = () => {
-    setToastMessage('')
-    setToastMessageIsVisible(false)
-  }
   return (
     <>
-      <ToastMessage message={toastMessage} isVisible={toastMessageIsVisible} onClose={handleCloseToastMessage} />
+      <ToastMessage message={toastMessage} isVisible={toastMessageIsVisible} onClose={closeToastMessage} />
       <div className="grid-cols-2 gap-4 ">
         <div className="col-span-2 md:col-span-1">
-          <AddDepartmentForm onDepartmentAdded={(message) => {
-            handleShowToastMessage(message)
-          }} />
+          <AddDepartmentForm onDepartmentAdded={showToastMessage} refreshKey={handleRefresh} />
         </div>
         <div className="col-span-2 md:col-span-1">
-          <DepartmentList />
+          <DepartmentList refreshKey={refresh} />
         </div>
       </div>
     </>

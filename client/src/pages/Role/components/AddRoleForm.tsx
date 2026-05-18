@@ -6,11 +6,13 @@ import type { RoleFieldErrors } from "../../../interfaces/RoleFieldErrors";
 
 interface AddRoleFormProps {
     onRoleAdded: (message: string) => void
+    refreshKey: () => void
 
 }
 
 const AddRoleForm: FC<AddRoleFormProps> = ({
-    onRoleAdded
+    onRoleAdded,
+    refreshKey,
 }) => {
     const [loadingStore, setLoadingStore] = useState(false)
     const [roleName, setRoleName] = useState('')
@@ -23,18 +25,20 @@ const AddRoleForm: FC<AddRoleFormProps> = ({
 
             setLoadingStore(true)
 
-            const res = await RoleService.storeRole({role_name: roleName, role_description: description})
+            const res = await RoleService.storeRole({ role_name: roleName, role_description: description })
 
-            if(res.status === 200) {
+            if (res.status === 200) {
                 setRoleName("");
-                setDescription(""); 
+                setDescription("");
                 setErrors({});
+
                 onRoleAdded(res.data.message)
+                refreshKey()
             } else {
                 console.error('Unexpected error occured during store role: ', res.data)
             }
-        } catch(error: any) {
-            if(error.response && error.response.status === 422) {
+        } catch (error: any) {
+            if (error.response && error.response.status === 422) {
                 setErrors(error.response.data.errors)
             } else {
                 console.error('Unexpected server error during store role: ',
@@ -52,7 +56,7 @@ const AddRoleForm: FC<AddRoleFormProps> = ({
             <form onSubmit={handleStoreRole}>
                 <div className="mb-4">
                     <FloatingLabelInput label="Role" type="text" name="role_name" value={roleName} onChange={(e) => setRoleName(e.target.value)}
-                    required autoFocus errors={errors.role_name} />
+                        required autoFocus errors={errors.role_name} />
                 </div>
                 <div className="mb-4">
                     <FloatingLabelInput label="Description" type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
