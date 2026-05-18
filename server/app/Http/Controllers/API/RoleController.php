@@ -32,4 +32,13 @@ class RoleController extends Controller
             'message' => 'Role Successfully Saved.'
         ], 200);
     }
+
+    public function getRole($role_id)
+    {
+        $role = Role::find($role_id);
+
+        return response()->json([
+            'role' => $role
+        ], 200);
+    }
 }

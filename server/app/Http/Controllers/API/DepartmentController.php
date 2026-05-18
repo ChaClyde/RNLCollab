@@ -32,4 +32,13 @@ class DepartmentController extends Controller
             'message' => 'Department Successfully Saved.'
         ], 200);
     }
+
+    public function getDepartment($department_id)
+    {
+        $department_name = Department::find($department_id);
+
+        return response()->json([
+            'department_name' => $department_id
+        ], 200);
+    }
 }
