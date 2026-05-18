@@ -8,9 +8,18 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
+    public function loadDepartments() {
+        $departments = Department::where('tbl_departments.is_deleted', false)
+            ->get();
+
+            return response()->json([
+                'departments' => $departments
+            ], 200);
+    }
+
     public function storeDepartment(Request $request){
         $validated = $request->validate([
-            'department_name' => ['required', 'min:3', 'max:15'],
+            'department_name' => ['required', 'min:3', 'max:30'],
             'department_description' => ['nullable', 'string', 'max:255']
         ]);
 
