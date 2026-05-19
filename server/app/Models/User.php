@@ -8,11 +8,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable, HasApiTokens;
+
+    protected $table = 'tbl_users';
+    protected $primaryKey = 'user_id';
 
     /**
      * The attributes that are mass assignable.
@@ -20,9 +24,17 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'middle_name',
+        'last_name',
+        'suffix_name',
         'email',
+        'status',
+        'username',
         'password',
+        'role_id',
+        'department_id',
+        'is_deleted',
     ];
 
     /**
@@ -46,5 +58,13 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function role(): BelongsTo {
+        return $this->belongsTo(Role::class, 'role_id', 'role_id');
+    }
+
+    public function department(): BelongsTo {
+        return $this->belongsTo(Department::class, 'department_id', 'department_id');
     }
 }

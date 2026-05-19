@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\RoleController;
 use App\Http\Controllers\API\DepartmentController;
 use Illuminate\Http\Request;
@@ -19,6 +20,10 @@ Route::controller(DepartmentController::class)->prefix('/department')->group(fun
     Route::post('/storeDepartment', 'storeDepartment'); // /department/storeDepartment
     Route::put('/updateDepartment/{department}', 'updateDepartment'); // /department/departmentUpdate
     Route::put('/destroyDepartment/{department}', 'destroyDepartment'); // /department/depaermentDestroy
+});
+
+Route::controller(UserController::class)->prefix('/user')->group(function() {
+    Route::post('/storeUser', 'storeUser'); // /user/storeUser
 });
 
 // Route::get('/user', function (Request $request) {
