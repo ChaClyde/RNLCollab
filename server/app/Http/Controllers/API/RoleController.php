@@ -41,4 +41,31 @@ class RoleController extends Controller
             'role' => $role
         ], 200);
     }
+
+    public function updateRole(Request $request, Role $role) {
+        $validated = $request->validate([
+            'role_name' => ['required', 'min:3', 'max:30'],
+            'role_description' => ['nullable', 'string', 'max:255']
+        ]);
+
+        $role->update([
+            'role_name' => $validated['role_name'],
+            'role_description' => $validated['role_description'] ?? null,
+        ]);
+
+        return response()->json([
+            'message' => 'Role Successfully Updated.',
+            'role' => $role
+        ], 200);
+    }
+
+    public function destroyRole (Role $role) {
+        $role ->update([
+            'is_deleted' => true
+        ]);
+
+        return response()->json([
+            'message' => 'Role Successfully Deleted.'
+        ], 200);
+    }
 }

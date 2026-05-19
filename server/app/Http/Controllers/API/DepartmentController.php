@@ -35,10 +35,37 @@ class DepartmentController extends Controller
 
     public function getDepartment($department_id)
     {
-        $department_name = Department::find($department_id);
+        $department = Department::find($department_id);
 
         return response()->json([
-            'department_name' => $department_id
+            'department' => $department
+        ], 200);
+    }
+
+    public function updateDepartment(Request $request, Department $department) {
+        $validated = $request->validate([
+            'department_name' => ['required', 'min:3', 'max:30'],
+            'department_description' => ['nullable', 'string', 'max:255']
+        ]);
+
+        $department->update([
+            'department_name' => $validated['department_name'],
+            'department_description' => $validated['department_description'] ?? null,
+        ]);
+
+        return response()->json([
+            'message' => 'Department Successfully Updated.',
+            'department' => $department
+        ], 200);
+    }
+
+    public function destroyDepartment (Department $department) {
+        $department ->update([
+            'is_deleted' => true
+        ]);
+
+        return response()->json([
+            'message' => 'Department Successfully Deleted.'
         ], 200);
     }
 }

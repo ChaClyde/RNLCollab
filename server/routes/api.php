@@ -9,12 +9,16 @@ Route::controller(RoleController::class)->prefix('/role')->group(function() {
     Route::get('/loadRole', 'loadRoles'); //role/loadRole
     Route::get('/getRole/{role_id}', 'getRole'); // /role/
     Route::post('/storeRole', 'storeRole'); // /role/storeRole
+    Route::put('/updateRole/{role}', 'updateRole'); // /role/roleUpdate
+    Route::put('/destroyRole/{role}', 'destroyRole'); // /role/roleDestroy
 });
 
 Route::controller(DepartmentController::class)->prefix('/department')->group(function() {
     Route::get('/loadDepartment', 'loadDepartments'); // /department/loadDepartments
     Route::get('/getDepartment/{department_id}', 'getDepartment'); //department/
     Route::post('/storeDepartment', 'storeDepartment'); // /department/storeDepartment
+    Route::put('/updateDepartment/{department}', 'updateDepartment'); // /department/departmentUpdate
+    Route::put('/destroyDepartment/{department}', 'destroyDepartment'); // /department/depaermentDestroy
 });
 
 // Route::get('/user', function (Request $request) {
