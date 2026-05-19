@@ -59,13 +59,13 @@ const DepartmentList: FC<DepartmentListProps> = ({refreshKey}) => {
                                     <TableCell className="px-4 py-3 text-center">{department.department_name}</TableCell>
                                     <TableCell className="px-4 py-3 text-center">{department.status}</TableCell>
                                     <TableCell className="px-4 py-3 text-center">
-                                        <div className="flex justify-center items-center">
+                                        <div className="flex justify-start text-start items-start gap-4">
                                             <Link to={`/departments/edit/${department.department_id}`} className="text-green-600 font-medium hover:underline">
                                                 Edit
                                             </Link>
-                                            {/* <Link to={`/roles-permissions/delete/${role.role_id}`} className="text-red-600 hover:underline">
+                                            <Link to={`/departments/delete/${department.department_id}`} className="text-red-600 hover:underline font-medium">
                                                Delete
-                                           </Link> */}
+                                           </Link>
                                         </div>
                                     </TableCell>
                                 </TableRow>

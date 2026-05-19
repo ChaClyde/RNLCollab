@@ -12,20 +12,25 @@ import UserMainPage from "../pages/User/UserMainPage"
 const AppRoutes = () => {
     return (
         <>
-                     {/* Roles-Permissions */}
+
             <Routes>
                 <Route element={<AppLayout />}>
+                    {/* Roles-Permissions */}
                     <Route path="/roles-permissions" element={<RolePage />} />
                     <Route path="/roles-permissions/edit/:role_id" element={<EditRolePage />} />
-                    <Route path="/roles-permissions/delete" element={<DeleteRolePage />} />
+                    <Route path="/roles-permissions/delete/:role_id" element={<DeleteRolePage />} />
 
                     {/* Department */}
                     <Route path="/departments" element={<DepartmentPage />} />
                     <Route path="/departments/edit/:department_id" element={<EditDepartmentPage />} />
-                    <Route path="/departments/delete" element={<DeleteDepartmentPage />} />
+                    <Route path="/departments/delete/:department_id" element={<DeleteDepartmentPage />} />
 
                     {/* Users */}
                     <Route path="/users" element={<UserMainPage />} />
+
+                    {/* Activity Logs */}
+
+                    {/* Trash */}
                 </Route>
             </Routes>
         </>

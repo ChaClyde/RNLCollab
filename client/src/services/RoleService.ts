@@ -25,6 +25,22 @@ const RoleService = {
             throw error;
         }
     },
+    updateRole: async (roleId: string | number, data: any) => {
+        try {
+            const response = await AxiosInstance.put(`/role/updateRole/${roleId}`, data);
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    },
+    destroyRole: async (roleId: string | number) => {
+        try {
+            const response = await AxiosInstance.put(`/role/destroyRole/${roleId}`);
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    },
 };
 
 export default RoleService;

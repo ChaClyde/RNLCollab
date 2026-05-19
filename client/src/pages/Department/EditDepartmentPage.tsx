@@ -1,9 +1,22 @@
+import ToastMessage from "../../components/ToastMessage/ToastMessage";
+import { useToastMessage } from "../../hooks/useToastMessage";
 import EditDepartmentForm from "./components/EditDepartmentForm"
 
 const EditDepartmentPage = () => {
+
+    const {
+      message:
+      toastMessage,
+      isVisible:
+      toastMessageIsVisible,
+      showToastMessage,
+      closeToastMessage
+    } = useToastMessage("", false);
+
   return (
     <>
-    <EditDepartmentForm />
+    <ToastMessage message={toastMessage} isVisible={toastMessageIsVisible} onClose={closeToastMessage} />
+    <EditDepartmentForm onDepartmentUpdated={showToastMessage} />
     </>
   )
 }

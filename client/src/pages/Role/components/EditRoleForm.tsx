@@ -1,12 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FC, type FormEvent } from "react";
 import BackButton from "../../../components/Button/BackButton";
 import SubmitButton from "../../../components/Button/SubmitButton"
 import FloatingLabelInput from "../../../components/Input/FloatingLabelInput"
 import type { RoleFieldErrors } from "../../../interfaces/RoleFieldErrors";
 import RoleService from "../../../services/RoleService";
 import { useParams } from "react-router-dom";
+import Spinner from "../../../components/Spinner/Spinner";
 
-const EditRoleForm = () => {
+interface EditRoleFormProps {
+    onRoleUpdated: (message: string) => void;
+}
+
+const EditRoleForm: FC<EditRoleFormProps> = ({ onRoleUpdated }) => {
     const [loadingGet, setLoadingGet] = useState(false);
     const [loadingUpdate, setLoadingUpdate] = useState(false);
     const [role, setRole] = useState("");
@@ -34,6 +39,35 @@ const EditRoleForm = () => {
         }
     }
 
+    const handleUpdateRole = async (e: FormEvent) => {
+        try {
+            e.preventDefault()
+
+            setLoadingUpdate(true)
+
+            const res = await RoleService.updateRole(role_id!, {
+                role_name: role,
+                role_description: description
+            })
+
+            if (res.status === 200) {
+                setErrors({})
+                setRole(res.data.role.role_name)
+                onRoleUpdated(res.data.message)
+            } else {
+                console.error('Unexpected status error occured during updating role: ', res.status)
+            }
+        } catch (error: any) {
+            if (error.response && error.response.status === 422) {
+                setErrors(error.response.data.errors)
+            } else {
+                console.error('Unexpected server error occured during updating role: ', error)
+            }
+        } finally {
+            setLoadingUpdate(false)
+        }
+    };
+
     useEffect(() => {
         if (role_id) {
             const parsedRoleId = parseInt(role_id)
@@ -45,18 +79,26 @@ const EditRoleForm = () => {
 
     return (
         <>
-            <form>
-                <div className="mb-4">
-                    <FloatingLabelInput label="Role" type="text" name="role" value={role} onChange={(e) => setRole(e.target.value)} />
+            {loadingGet ? (
+                <div className="flex justify-center items-center mt-52">
+                    <Spinner size="lg" />
                 </div>
-                <div className="mb-4">
-                    <FloatingLabelInput label="Description" type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
-                </div>
-                <div className="flex justify-end gap-4">
-                    <BackButton label="Back" path="/roles-permissions" />
-                    <SubmitButton label="Save Role" />
-                </div>
-            </form>
+
+            ) : (
+                <form onSubmit={handleUpdateRole}>
+                    <div className="mb-4">
+                        <FloatingLabelInput label="Role" type="text" name="role" value={role} onChange={(e) => setRole(e.target.value)} required autoFocus errors={errors.role_name} />
+                    </div>
+                    <div className="mb-4">
+                        <FloatingLabelInput label="Description" type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                    </div>
+                    <div className="flex justify-end gap-4">
+                        {!loadingUpdate && <BackButton label="Back" path="/roles-permissions" />}
+                        <SubmitButton label="Update Role" loading={loadingUpdate} loadingLabel="Updating Role..." />
+                    </div>
+                </form>
+            )}
+
         </>
     )
 }

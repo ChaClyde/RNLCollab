@@ -4,6 +4,8 @@ import DepartmentList from "./components/DepartmentList"
 import ToastMessage from "../../components/ToastMessage/ToastMessage"
 import { useToastMessage } from "../../hooks/useToastMessage"
 import { useRefresh } from "../../hooks/useRefresh"
+import { useEffect } from "react"
+import { useLocation } from "react-router-dom";
 
 const DepartmentPage = () => {
   const {
@@ -14,7 +16,15 @@ const DepartmentPage = () => {
   } = useToastMessage("", false);
 
   const { refresh, handleRefresh } = useRefresh(false);
+  const location = useLocation();
 
+    useEffect(() => {
+      if (location.state?.message) {
+        showToastMessage(location.state.message);
+        handleRefresh();
+        window.history.replaceState({}, document.title);
+      }
+    }, [location.state, showToastMessage]);
   return (
     <>
       <ToastMessage message={toastMessage} isVisible={toastMessageIsVisible} onClose={closeToastMessage} />
