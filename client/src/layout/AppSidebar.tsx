@@ -25,7 +25,7 @@ const AppSidebar = () => {
                 {
                     text: "Roles & Permissions",
                     path: "/roles-permissions",
-                    
+
                 },
                 {
                     text: "Department / Office",
@@ -33,6 +33,24 @@ const AppSidebar = () => {
                 },
                 {
                     text: "All Users",
+                    path: "/users",
+                },
+            ],
+        },
+        {
+            text: "Event Management",
+            children: [
+                {
+                    text: "Event Venue",
+                    path: "/roles-permissions",
+
+                },
+                // {
+                //     text: "Department / Office",
+                //     path: "/departments",
+                // },
+                {
+                    text: "All Events",
                     path: "/users",
                 },
             ],

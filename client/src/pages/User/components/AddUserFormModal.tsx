@@ -15,9 +15,10 @@ interface AddUserFormModalProps {
     onUserAdded: (message: string) => void
     isOpen: boolean;
     onClose: () => void;
+    refreshKey: () => void;
 }
 
-const AddUserFormModal: FC<AddUserFormModalProps> = ({ onUserAdded, isOpen, onClose }) => {
+const AddUserFormModal: FC<AddUserFormModalProps> = ({ onUserAdded, isOpen, onClose, refreshKey }) => {
     const [loadingRoles, setLoadingRoles] = useState(false);
     const [roles, setRoles] = useState<RoleColumns[]>([]);
 
@@ -76,6 +77,7 @@ const AddUserFormModal: FC<AddUserFormModalProps> = ({ onUserAdded, isOpen, onCl
                 setErrors({})
 
                 handleLoadRoles();
+                refreshKey()
             } else {
                 console.error('Unexpected error occured during adding user: ', res.status)
             }
@@ -179,10 +181,10 @@ const AddUserFormModal: FC<AddUserFormModalProps> = ({ onUserAdded, isOpen, onCl
                                     <option value="">Loading...</option>
                                 ) : (
                                     <>
-                                    <option value="">Select Department/Office</option>
-                                    {departments.map((department, index) => (
-                                        <option value={department.department_id} key={index}>{department.department_name}</option>
-                                    ))}
+                                        <option value="">Select Department/Office</option>
+                                        {departments.map((department, index) => (
+                                            <option value={department.department_id} key={index}>{department.department_name}</option>
+                                        ))}
                                     </>
                                 )}
                             </FloatingLabelSelect>
