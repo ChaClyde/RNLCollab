@@ -23,6 +23,7 @@ Route::controller(DepartmentController::class)->prefix('/department')->group(fun
 });
 
 Route::controller(UserController::class)->prefix('/user')->group(function() {
+    Route::get('/loadUsers', 'loadUsers');  // /user/loadUser
     Route::post('/storeUser', 'storeUser'); // /user/storeUser
 });
 

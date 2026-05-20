@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function loadUsers() {
+        $users = User::with(['role', 'department'])
+            ->where('tbl_users.is_deleted', false)
+            ->get();
+
+            return response()->json([
+                'users' => $users
+            ], 200);
+    }
+
     public function storeUser(Request $request) {
         $validated = $request->validate([
             'first_name' => ['required', 'max:55',],
