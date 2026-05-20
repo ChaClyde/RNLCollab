@@ -22,9 +22,10 @@ Route::controller(DepartmentController::class)->prefix('/department')->group(fun
     Route::put('/destroyDepartment/{department}', 'destroyDepartment'); // /department/depaermentDestroy
 });
 
-Route::controller(UserController::class)->prefix('/user')->group(function() {
+Route::controller(UserController::class)->prefix('/users')->group(function() {
     Route::get('/loadUsers', 'loadUsers');  // /user/loadUser
     Route::post('/storeUser', 'storeUser'); // /user/storeUser
+    Route::put('/updateUser/{user}', 'updateUser');  // /user/updateUser
 });
 
 // Route::get('/user', function (Request $request) {
