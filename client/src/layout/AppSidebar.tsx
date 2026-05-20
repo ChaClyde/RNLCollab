@@ -17,7 +17,7 @@ const AppSidebar = () => {
     const sidebarItems = [
         {
             text: "Dashboard",
-            path: "/roles",
+            path: "/",
         },
         {
             text: "User Management",
@@ -29,7 +29,7 @@ const AppSidebar = () => {
                 },
                 {
                     text: "Department / Office",
-                    path: "/users",
+                    path: "/departments",
                 },
                 {
                     text: "All Users",
@@ -39,11 +39,11 @@ const AppSidebar = () => {
         },
         {
             text: "Activity Logs",
-            path: "/users",
+            path: "/logs",
         },
         {
             text: "Trash",
-            path: "/users",
+            path: "/trash",
         },
     ]
 

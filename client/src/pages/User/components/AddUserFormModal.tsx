@@ -56,10 +56,10 @@ const AddUserFormModal: FC<AddUserFormModalProps> = ({ onUserAdded, isOpen, onCl
                 username: username,
                 password: password,
                 password_confirmation: passwordConfirmation
-            } 
+            }
             const res = await UserService.storeUser(payload)
 
-            if(res.status === 200) {
+            if (res.status === 200) {
                 onUserAdded(res.data.message)
 
                 setFirstName('')
@@ -74,11 +74,13 @@ const AddUserFormModal: FC<AddUserFormModalProps> = ({ onUserAdded, isOpen, onCl
                 setPassword('')
                 setPasswordConfirmation('')
                 setErrors({})
+
+                handleLoadRoles();
             } else {
                 console.error('Unexpected error occured during adding user: ', res.status)
             }
-        } catch(error: any) {
-            if(error.response && error.response.status === 422) {
+        } catch (error: any) {
+            if (error.response && error.response.status === 422) {
                 setErrors(error.response.data.errors)
             } else {
                 console.log('Unexpected server error occured during adding user: ', error)
@@ -123,9 +125,11 @@ const AddUserFormModal: FC<AddUserFormModalProps> = ({ onUserAdded, isOpen, onCl
     };
 
     useEffect(() => {
-        handleLoadRoles();
-        handleLoadDepartments();
-    }, []);
+        if (isOpen) {
+            handleLoadRoles();
+            handleLoadDepartments();
+        }
+    }, [isOpen]);
 
     return (
         <>
@@ -155,22 +159,32 @@ const AddUserFormModal: FC<AddUserFormModalProps> = ({ onUserAdded, isOpen, onCl
                         </div>
                         <div className="mb-4">
                             <FloatingLabelSelect label="Role" name="role" value={role} onChange={(e) => setRole(e.target.value)} errors={errors.role} >
-                                <option value="">Select Role</option>
+
                                 {loadingRoles ? (
                                     <option value="">Loading...</option>
-                                ) : roles.map((role, index) => (
-                                    <option value={role.role_id} key={index}>{role.role_name}</option>
-                                ))}
+                                ) : (
+                                    <>
+                                        <option value="">Select Role</option>
+                                        {roles.map((role, index) => (
+                                            <option value={role.role_id} key={index}>{role.role_name}</option>
+                                        ))}
+                                    </>
+                                )}
                             </FloatingLabelSelect>
                         </div>
                         <div className="mb-4">
                             <FloatingLabelSelect label="Department" name="department" value={department} onChange={(e) => setDepartment(e.target.value)} errors={errors.department} >
-                                <option value="">Select Department/Office</option>
+
                                 {loadingDepartments ? (
                                     <option value="">Loading...</option>
-                                ) : departments.map((department, index) => (
-                                    <option value={department.department_id} key={index}>{department.department_name}</option>
-                                ))}
+                                ) : (
+                                    <>
+                                    <option value="">Select Department/Office</option>
+                                    {departments.map((department, index) => (
+                                        <option value={department.department_id} key={index}>{department.department_name}</option>
+                                    ))}
+                                    </>
+                                )}
                             </FloatingLabelSelect>
                         </div>
                         <div className="mb-4">
