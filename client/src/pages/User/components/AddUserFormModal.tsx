@@ -5,11 +5,11 @@ import SubmitButton from "../../../components/Button/SubmitButton";
 import CloseButton from "../../../components/Button/CloseButton";
 import { useEffect, useState, type FC, type FormEvent } from "react";
 import RoleService from "../../../services/RoleService";
-import type { RoleColumns } from "../../../interfaces/RoleColumns";
-import type { DepartmentsColumns } from "../../../interfaces/DepartmentColumns";
 import DepartmentService from "../../../services/DepartmentService";
-import type { UserFieldErrors } from "../../../interfaces/UserFieldErrors";
 import UserService from "../../../services/UserService";
+import type { UserFieldErrors } from "../../../interfaces/UserInterface";
+import type { RoleColumns } from "../../../interfaces/RoleInterface";
+import type { DepartmentsColumns } from "../../../interfaces/DepartmentInterface";
 
 interface AddUserFormModalProps {
     onUserAdded: (message: string) => void

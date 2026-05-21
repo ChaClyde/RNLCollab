@@ -7,3 +7,7 @@ export interface RoleColumns {
     created_at: string;
     updated_at: string;
 }
+
+export interface RoleFieldErrors {
+    role_name?: string[];
+}

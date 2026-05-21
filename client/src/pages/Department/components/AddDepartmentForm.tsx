@@ -2,7 +2,7 @@ import { useState, type FC, type FormEvent } from "react"
 import SubmitButton from "../../../components/Button/SubmitButton"
 import FloatingLabelInput from "../../../components/Input/FloatingLabelInput"
 import DepartmentService from "../../../services/DepartmentService";
-import type { DepartmentFieldErrors } from "../../../interfaces/DepartmentFieldsErrors";
+import type { DepartmentFieldErrors } from "../../../interfaces/DepartmentInterface";
 
 interface AddDepartmentFormProps {
     onDepartmentAdded: (message: string) => void

@@ -1,9 +1,9 @@
 import { useEffect, useState, type FC } from "react";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "../../../components/Table"
-import type { RoleColumns } from "../../../interfaces/RoleColumns";
 import RoleService from "../../../services/RoleService";
 import Spinner from "../../../components/Spinner/Spinner";
 import { Link } from "react-router-dom";
+import type { RoleColumns } from "../../../interfaces/RoleInterface";
 
 interface RoleListProps {
     refreshKey: boolean

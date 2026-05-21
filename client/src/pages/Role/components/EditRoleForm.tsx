@@ -2,10 +2,10 @@ import { useEffect, useState, type FC, type FormEvent } from "react";
 import BackButton from "../../../components/Button/BackButton";
 import SubmitButton from "../../../components/Button/SubmitButton"
 import FloatingLabelInput from "../../../components/Input/FloatingLabelInput"
-import type { RoleFieldErrors } from "../../../interfaces/RoleFieldErrors";
 import RoleService from "../../../services/RoleService";
 import { useParams } from "react-router-dom";
 import Spinner from "../../../components/Spinner/Spinner";
+import type { RoleFieldErrors } from "../../../interfaces/RoleInterface";
 
 interface EditRoleFormProps {
     onRoleUpdated: (message: string) => void;

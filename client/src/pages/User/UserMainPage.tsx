@@ -3,6 +3,7 @@ import { useModal } from "../../hooks/useModal"
 import { useRefresh } from "../../hooks/useRefresh";
 import { useToastMessage } from "../../hooks/useToastMessage";
 import AddUserFormModal from "./components/AddUserFormModal"
+import DeleteUserFormModal from "./components/DeleteUserFormModal";
 import EditUserFormModal from "./components/EditUserFormModal";
 import UserList from "./components/UserList"
 
@@ -16,9 +17,16 @@ const UserMainPage = () => {
 
   const {
     isOpen: isEditUserFormModal,
-    selectedUser,
+    selectedUser: selectedUserForEdit,
     openModal: openEditUserFormModal,
     closeModal: closeEditUserFormModal
+  } = useModal(false);
+
+  const {
+    isOpen: isDeleteUserFormModalOpen,
+    selectedUser: selectedUserForDelete,
+    openModal: openDeleteUserFormModal,
+    closeModal: closeDeleteUserFormModal
   } = useModal(false);
 
   const {
@@ -49,18 +57,27 @@ const UserMainPage = () => {
       />
 
       <EditUserFormModal
-        user={selectedUser}
-        onUserUpdate={showToastMessage}
+        user={selectedUserForEdit}
+        onUserUpdated={showToastMessage}
         refreshKey={handleRefresh}
         isOpen={isEditUserFormModal}
         onClose={closeEditUserFormModal}
       />
 
+      <DeleteUserFormModal
+      user={selectedUserForDelete}
+      onDeleteUser={showToastMessage}
+      refreshKey={handleRefresh}
+      isOpen={isDeleteUserFormModalOpen}
+      onClose={closeDeleteUserFormModal}
+      />
+
       <UserList
         onAddUser={openAddUserFormModal}
         onEditUser={(user) => openEditUserFormModal(user)}
+        onDeleteUser={(user) => openDeleteUserFormModal(user)}
         refreshKey={refresh}
-      />
+      /> 
 
     </>
   )

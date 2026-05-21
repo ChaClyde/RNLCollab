@@ -1,9 +1,10 @@
+import { Axios } from "axios";
 import AxiosInstance from "./AxiosInstance";
 
 const UserService = {
-    loadUsers: async (page: number, search: string) => {
+    loadUsers: async (userId: number | string) => {
         try {
-            const response = await AxiosInstance.get("users/loadUsers");
+            const response = await AxiosInstance.get(`users/loadUsers`);
             return response;
         } catch (error) {
             throw error;
@@ -27,7 +28,14 @@ const UserService = {
             throw error;
         }
     },
-
+    destroyUser: async (userId: string | number) => {
+        try{
+            const response = await AxiosInstance.put(`/users/destroyUser/${userId}`);
+            return response 
+        } catch(error) {
+            throw error; 
+        }
+    }
 }
 
 export default UserService;

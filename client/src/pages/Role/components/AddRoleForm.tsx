@@ -2,7 +2,7 @@ import { useState, type FC, type FormEvent } from "react";
 import SubmitButton from "../../../components/Button/SubmitButton"
 import FloatingLabelInput from "../../../components/Input/FloatingLabelInput"
 import RoleService from "../../../services/RoleService";
-import type { RoleFieldErrors } from "../../../interfaces/RoleFieldErrors";
+import type { RoleFieldErrors } from "../../../interfaces/RoleInterface";
 
 interface AddRoleFormProps {
     onRoleAdded: (message: string) => void

@@ -7,3 +7,7 @@ export interface DepartmentsColumns {
     created_at: string;
     updated_at: string;
 }
+
+export interface DepartmentFieldErrors {
+    department_name?: string[];
+}

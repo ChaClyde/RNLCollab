@@ -4,17 +4,16 @@ import SubmitButton from "../../../components/Button/SubmitButton"
 import FloatingLabelInput from "../../../components/Input/FloatingLabelInput"
 import Modal from "../../../components/Modal"
 import FloatingLabelSelect from "../../../components/Select/FloatingLabelselect"
-import type { UserColumns } from "../../../interfaces/UserColumns"
-import type { RoleColumns } from "../../../interfaces/RoleColumns"
-import type { DepartmentsColumns } from "../../../interfaces/DepartmentColumns"
-import type { UserFieldErrors } from "../../../interfaces/UserFieldErrors"
 import RoleService from "../../../services/RoleService"
 import DepartmentService from "../../../services/DepartmentService"
 import UserService from "../../../services/UserService"
+import type { UserColumns, UserFieldErrors } from "../../../interfaces/UserInterface"
+import type { RoleColumns } from "../../../interfaces/RoleInterface"
+import type { DepartmentsColumns } from "../../../interfaces/DepartmentInterface"
 
 interface EditUserFormModalProps {
     user: UserColumns | null
-    onUserUpdate: (message: string) => void
+    onUserUpdated: (message: string) => void
     refreshKey: () => void
     isOpen: boolean
     onClose: () => void
@@ -22,7 +21,7 @@ interface EditUserFormModalProps {
 
 const EditUserFormModal: FC<EditUserFormModalProps> = ({
     user,
-    onUserUpdate,
+    onUserUpdated,
     refreshKey,
     isOpen,
     onClose
@@ -77,7 +76,7 @@ const EditUserFormModal: FC<EditUserFormModalProps> = ({
                 setUsername(res.data.user.username);
                 setErrors({});
 
-                onUserUpdate(res.data.message)
+                onUserUpdated(res.data.message)
 
                 handleLoadRoles();
                 handleLoadDepartments();
@@ -138,20 +137,23 @@ const EditUserFormModal: FC<EditUserFormModalProps> = ({
     }, [isOpen]);
 
     useEffect(() => {
-        if (user) {
-            setFirstName(user.first_name);
-            setMiddleName(user.middle_name ?? '');
-            setLastName(user.last_name);
-            setSuffixName(user.suffix_name ?? '');
-            setRole(user.role.role_id.toString());
-            setDepartment(user.department.department_id.toString());
-            setStatus(user.status);
-            setEmail(user.email);
-            setUsername(user.username);
-        } else {
-            console.error('Unexpected user error occured during getting user details: ', user)
+        if (isOpen) {
+            if (user) {
+                setFirstName(user.first_name);
+                setMiddleName(user.middle_name ?? '');
+                setLastName(user.last_name);
+                setSuffixName(user.suffix_name ?? '');
+                setRole(user.role.role_id.toString());
+                setDepartment(user.department.department_id.toString());
+                setStatus(user.status);
+                setEmail(user.email);
+                setUsername(user.username);
+            } else {
+                console.error('Unexpected user error occured during getting user details: ', user)
+            }
         }
-    }, [user]);
+
+    }, [isOpen, user]);
 
     return (
         <>

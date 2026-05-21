@@ -2,10 +2,10 @@ import { useEffect, useState, type FC, type FormEvent } from "react";
 import BackButton from "../../../components/Button/BackButton"
 import SubmitButton from "../../../components/Button/SubmitButton"
 import FloatingLabelInput from "../../../components/Input/FloatingLabelInput"
-import type { DepartmentFieldErrors } from "../../../interfaces/DepartmentFieldsErrors";
 import { useParams } from "react-router-dom";
 import DepartmentService from "../../../services/DepartmentService";
 import Spinner from "../../../components/Spinner/Spinner";
+import type { DepartmentFieldErrors } from "../../../interfaces/DepartmentInterface";
 
 interface EditDepartmentFormProps {
     onDepartmentUpdated: (message: string) => void;

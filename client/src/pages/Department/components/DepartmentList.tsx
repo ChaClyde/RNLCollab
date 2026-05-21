@@ -2,9 +2,9 @@
 import { useEffect, useState, type FC } from "react";
 import Spinner from "../../../components/Spinner/Spinner";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "../../../components/Table"
-import type { DepartmentsColumns } from "../../../interfaces/DepartmentColumns";
 import DepartmentService from "../../../services/DepartmentService";
 import { Link } from "react-router-dom";
+import type { DepartmentsColumns } from "../../../interfaces/DepartmentInterface";
 
 interface DepartmentListProps {
     refreshKey: boolean
