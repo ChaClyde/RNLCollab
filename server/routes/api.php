@@ -26,6 +26,7 @@ Route::controller(UserController::class)->prefix('/users')->group(function() {
     Route::get('/loadUsers', 'loadUsers');  // /user/loadUser
     Route::post('/storeUser', 'storeUser'); // /user/storeUser
     Route::put('/updateUser/{user}', 'updateUser');  // /user/updateUser
+    Route::put('/destroyUser/{user}', 'destroyUser');  //  /user/destroyUser
 });
 
 // Route::get('/user', function (Request $request) {
