@@ -4,9 +4,9 @@ import ToastMessage from "../../components/ToastMessage/ToastMessage";
 import { useToastMessage } from "../../hooks/useToastMessage";
 
 const EditRolePage = () => {
-    useEffect(() =>{
-        document.title = "Edit Role Page";
-    }, [])
+  useEffect(() => {
+    document.title = "Edit Role Page";
+  }, [])
 
   const {
     message:
@@ -19,8 +19,8 @@ const EditRolePage = () => {
 
   return (
     <>
-    <ToastMessage message={toastMessage} isVisible={toastMessageIsVisible} onClose={closeToastMessage} />
-    <EditRoleForm onRoleUpdated={showToastMessage}/>
+      <ToastMessage message={toastMessage} isVisible={toastMessageIsVisible} onClose={closeToastMessage} />
+      <EditRoleForm onRoleUpdated={showToastMessage} />
     </>
   )
 }

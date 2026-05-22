@@ -42,7 +42,7 @@ const AppSidebar = () => {
             children: [
                 {
                     text: "Event Venue",
-                    path: "/event-venue",
+                    path: "/venue",
 
                 },
                 // {
@@ -51,7 +51,7 @@ const AppSidebar = () => {
                 // },
                 {
                     text: "All Events",
-                    path: "/all-events  ",
+                    path: "/all-events",
                 },
             ],
         },
