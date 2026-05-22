@@ -42,7 +42,7 @@ const AppSidebar = () => {
             children: [
                 {
                     text: "Event Venue",
-                    path: "/roles-permissions",
+                    path: "/event-venue",
 
                 },
                 // {
@@ -51,7 +51,21 @@ const AppSidebar = () => {
                 // },
                 {
                     text: "All Events",
-                    path: "/users",
+                    path: "/all-events  ",
+                },
+            ],
+        },
+        {
+            text: "Trash",
+            children: [
+                {
+                    text: "User Trash",
+                    path: "/user-trash",
+
+                },
+                {
+                    text: "Event Trash",
+                    path: "/event-trash",
                 },
             ],
         },
@@ -59,10 +73,7 @@ const AppSidebar = () => {
             text: "Activity Logs",
             path: "/logs",
         },
-        {
-            text: "Trash",
-            path: "/trash",
-        },
+        
     ]
 
     return (

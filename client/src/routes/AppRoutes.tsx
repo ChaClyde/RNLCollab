@@ -7,6 +7,7 @@ import DepartmentPage from "../pages/Department/DepartmentPage"
 import EditDepartmentPage from "../pages/Department/EditDepartmentPage"
 import DeleteDepartmentPage from "../pages/Department/DeleteDepartmentPage"
 import UserMainPage from "../pages/User/UserMainPage"
+import TrashMainPage from "../pages/Trash/TrashMainPage"
 
 
 const AppRoutes = () => {
@@ -15,6 +16,9 @@ const AppRoutes = () => {
 
             <Routes>
                 <Route element={<AppLayout />}>
+                    {/* Dashboard */}
+                    
+                
                     {/* Roles-Permissions */}
                     <Route path="/roles-permissions" element={<RolePage />} />
                     <Route path="/roles-permissions/edit/:role_id" element={<EditRolePage />} />
@@ -29,8 +33,10 @@ const AppRoutes = () => {
                     <Route path="/users" element={<UserMainPage />} />
 
                     {/* Activity Logs */}
+                    
 
                     {/* Trash */}
+                    <Route path="/user-trash" element={<TrashMainPage />} />
                 </Route>
             </Routes>
         </>

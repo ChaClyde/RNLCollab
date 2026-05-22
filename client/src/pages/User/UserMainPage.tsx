@@ -39,7 +39,7 @@ const UserMainPage = () => {
   const {
     refresh,
     handleRefresh
-  } = useRefresh(false);
+  } = useRefresh(false);  
 
   return (
     <>
