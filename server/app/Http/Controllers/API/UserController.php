@@ -94,4 +94,35 @@ class UserController extends Controller
             'message' => 'User Successfully Deleted.'
         ], 200);
     }
+
+    public function loadTrashUsers()
+    {
+        $users = User::with(['role', 'department'])
+            ->where('is_deleted', true)
+            ->get();
+
+        return response()->json([
+            'users' => $users
+        ], 200);
+    }
+
+        public function restoreUser(User $user)
+    {
+        $user->update([
+            'is_deleted' => false
+        ]);
+
+        return response()->json([
+            'message' => 'User restored successfully.'
+        ], 200);
+    }
+
+    public function forceDeleteUser(User $user)
+    {
+        $user->delete();
+
+        return response()->json([
+            'message' => 'User permanently deleted.'
+        ], 200);
+    }
 }
