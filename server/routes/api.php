@@ -5,7 +5,9 @@ use App\Http\Controllers\API\RoleController;
 use App\Http\Controllers\API\DepartmentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\VenueController;
 
+// Role Route
 Route::controller(RoleController::class)->prefix('/role')->group(function() {
     Route::get('/loadRole', 'loadRoles'); //role/loadRole
     Route::get('/getRole/{role_id}', 'getRole'); // /role/
@@ -14,6 +16,7 @@ Route::controller(RoleController::class)->prefix('/role')->group(function() {
     Route::put('/destroyRole/{role}', 'destroyRole'); // /role/roleDestroy
 });
 
+// Department Route
 Route::controller(DepartmentController::class)->prefix('/department')->group(function() {
     Route::get('/loadDepartment', 'loadDepartments'); // /department/loadDepartments
     Route::get('/getDepartment/{department_id}', 'getDepartment'); //department/
@@ -22,17 +25,22 @@ Route::controller(DepartmentController::class)->prefix('/department')->group(fun
     Route::put('/destroyDepartment/{department}', 'destroyDepartment'); // /department/depaermentDestroy
 });
 
+// User Route
 Route::controller(UserController::class)->prefix('/users')->group(function() {
     Route::get('/loadUsers', 'loadUsers');  // /user/loadUser
     Route::post('/storeUser', 'storeUser'); // /user/storeUser
     Route::put('/updateUser/{user}', 'updateUser');  // /user/updateUser
     Route::put('/destroyUser/{user}', 'destroyUser');  //  /user/destroyUser
 
-            // Trash
+// Trash
     Route::get('/loadTrashUsers', 'loadTrashUsers');
     Route::put('/restoreUser/{user}', 'restoreUser');
     Route::delete('/forceDeleteUser/{user}', 'forceDeleteUser');
+});
 
+
+Route::controller(VenueController::class)->prefix('/venue')->group(function() {
+    Route::post('/storeVenue', 'storeVenue');
 });
 
 // Route::get('/user', function (Request $request) {
