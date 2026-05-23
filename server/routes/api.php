@@ -38,8 +38,9 @@ Route::controller(UserController::class)->prefix('/users')->group(function() {
     Route::delete('/forceDeleteUser/{user}', 'forceDeleteUser');
 });
 
-
+// Venue
 Route::controller(VenueController::class)->prefix('/venue')->group(function() {
+    Route::get('/loadVenue', 'loadVenue'); 
     Route::post('/storeVenue', 'storeVenue');
 });
 

@@ -8,6 +8,15 @@ use App\Models\Venue;
 
 class VenueController extends Controller
 {
+    public function loadVenue() {
+        $venues = Venue::where('tbl_venues.is_deleted', false)
+            ->get();
+        
+        return response()->json([
+            'venues' => $venues
+        ], 200);
+    }
+
     public function storeVenue(Request $request)
     {
         $validated = $request->validate([
