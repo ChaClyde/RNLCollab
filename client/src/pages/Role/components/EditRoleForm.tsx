@@ -73,7 +73,7 @@ const EditRoleForm: FC<EditRoleFormProps> = ({ onRoleUpdated }) => {
             const parsedRoleId = parseInt(role_id)
             handleGetRole(parsedRoleId)
         } else {
-            console.error('Unexpected parameter error occured during getting: ', role_id)
+            console.error('Unexpected parameter error occured during getting role: ', role_id)
         }
     }, [role_id]);
 

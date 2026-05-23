@@ -38,7 +38,7 @@ const AppRoutes = () => {
                     {/* Venues */}
                     <Route path="/venue" element={<VenuePage />} />
                     <Route path="/venue/edit/:venue_id" element={<EditVenuePage />} />
-                    <Route path="/venue/delete" element={<DeleteVenuePage />} />
+                    <Route path="/venue/delete/:venue_id" element={<DeleteVenuePage />} />
 
                     {/* Events */}
                     {/* <Route path="/event-venue" element={<EventMainPage />} />

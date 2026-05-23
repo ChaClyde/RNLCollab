@@ -4,8 +4,11 @@ import AddVenueForm from "./components/AddVenueForm"
 import VenueList from "./components/VenueList"
 import { useToastMessage } from "../../hooks/useToastMessage"
 import { useRefresh } from "../../hooks/useRefresh"
+import { useLocation } from "react-router-dom"
 
 const VenuePage = () => {
+    const location = useLocation()
+
       const {
         message: toastMessage,
         isVisible: toastMessageIsVisible,
@@ -18,6 +21,15 @@ const VenuePage = () => {
     useEffect(() => {
         document.title = "Venue Page";
     }, []);
+
+    useEffect(() => {
+        if (location.state?.message) {
+            showToastMessage(location.state.message);
+            handleRefresh();
+            window.history.replaceState({}, document.title);
+        }
+    }, [location.state, showToastMessage]);
+
     return (
         <>
             <ToastMessage message={toastMessage} isVisible={toastMessageIsVisible} onClose={closeToastMessage} />

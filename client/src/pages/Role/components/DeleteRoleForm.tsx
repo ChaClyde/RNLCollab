@@ -45,7 +45,7 @@ const DeleteRoleForm = () => {
             const res = await RoleService.destroyRole(role_id!)
 
             if (res.status === 200) {
-                navigate('/roles-permissions', { state: { message: res.data.message } })
+                navigate('/venue', { state: { message: res.data.message } })
             } else {
                 console.error('Unexpected status error occured during deleting role: ', res.status);
             };
