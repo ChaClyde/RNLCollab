@@ -1,36 +1,32 @@
-import { useEffect, useState } from "react"
+import { useEffect} from "react"
 import ToastMessage from "../../components/ToastMessage/ToastMessage"
 import AddVenueForm from "./components/AddVenueForm"
 import VenueList from "./components/VenueList"
+import { useToastMessage } from "../../hooks/useToastMessage"
+import { useRefresh } from "../../hooks/useRefresh"
 
 const VenuePage = () => {
-    const [toastMessage, setToastMessage] = useState('')
-    const [toastMessageIsVisible, setToastMessageIsVisible] = useState(false)
+      const {
+        message: toastMessage,
+        isVisible: toastMessageIsVisible,
+        showToastMessage,
+        closeToastMessage,
+      } = useToastMessage("", false);
 
-    const handleShowToastMessage = (mesage: string) => {
-        setToastMessage(mesage)
-        setToastMessageIsVisible(true)
-    }
-
-    const handleCloseToastMessage = () => {
-        setToastMessage('')
-        setToastMessageIsVisible(false)
-    }
+      const { refresh, handleRefresh } = useRefresh(false);
 
     useEffect(() => {
         document.title = "Venue Page";
     }, []);
     return (
         <>
-            <ToastMessage message={toastMessage} isVisible={toastMessageIsVisible} onClose={handleCloseToastMessage} />
+            <ToastMessage message={toastMessage} isVisible={toastMessageIsVisible} onClose={closeToastMessage} />
             <div className="flex flex-col gap-4">
                 <div className="col-span-2 md:col-span-1">
-                    <AddVenueForm onVenueAdded={(message) => {
-                        handleShowToastMessage(message)
-                    }} />
+                    <AddVenueForm onVenueAdded={showToastMessage} refreshKey={handleRefresh}/>
                 </div>
                 <div className="col-span-2 md:col-span-1">
-                    <VenueList />
+                    <VenueList refreshKey={refresh} />
                 </div>
             </div>
         </>

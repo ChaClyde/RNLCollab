@@ -20,8 +20,8 @@ const EditvenueForm = () => {
                       <FloatingLabelInput label="Description" type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
                   </div>
                   <div className="flex justify-end gap-4">
-                      {!loadingUpdate && <BackButton label="Back" path="/roles-permissions" />}
-                      <SubmitButton label="Update Role" loading={loadingUpdate} loadingLabel="Updating Role..." />
+                      {!loadingUpdate && <BackButton label="Back" path="/venue" />}
+                      <SubmitButton label="Update Venue" loading={loadingUpdate} loadingLabel="Updating Venue..." />
                   </div>
               </form>
           )}

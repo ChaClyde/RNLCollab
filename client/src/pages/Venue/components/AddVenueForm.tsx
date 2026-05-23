@@ -2,13 +2,14 @@ import { useState, type FC, type FormEvent } from "react"
 import FloatingLabelInput from "../../../components/Input/FloatingLabelInput"
 import SubmitButton from "../../../components/Button/SubmitButton"
 import VenueService from "../../../services/VenueService"
-import type { VenueFieldErrors } from "../../../interfaces/VenueFieldErrors"
+import type { VenueFieldErrors } from "../../../interfaces/VenueInterface"
 
 interface AddVenueFormProps {
-    onVenueAdded: (message: string) => void
+    onVenueAdded: (message: string) => void;
+    refreshKey: () => void;
 }
 
-const AddVenueForm: FC<AddVenueFormProps> = ({ onVenueAdded }) => {
+const AddVenueForm: FC<AddVenueFormProps> = ({ onVenueAdded, refreshKey }) => {
     const [loadingStore, setLoadingStore] = useState(false)
     const [venue, setVenue] = useState('')
     const [description, setDescription] = useState('')
@@ -31,6 +32,7 @@ const AddVenueForm: FC<AddVenueFormProps> = ({ onVenueAdded }) => {
                 setErrors({});
 
                 onVenueAdded(res.data.message)
+                refreshKey()
             } else {
                 console.error('Unexpected error occured during store venue')
             }

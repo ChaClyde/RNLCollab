@@ -9,6 +9,8 @@ import DeleteDepartmentPage from "../pages/Department/DeleteDepartmentPage"
 import UserMainPage from "../pages/User/UserMainPage"
 import TrashMainPage from "../pages/Trash/TrashMainPage"
 import VenuePage from "../pages/Venue/VenuePage"
+import EditVenuePage from "../pages/Venue/EditVenuePage"
+import DeleteVenuePage from "../pages/Venue/DeleteVenuePage"
 
 
 const AppRoutes = () => {
@@ -35,6 +37,8 @@ const AppRoutes = () => {
 
                     {/* Venues */}
                     <Route path="/venue" element={<VenuePage />} />
+                    <Route path="/venue/edit/:venue_id" element={<EditVenuePage />} />
+                    <Route path="/venue/delete" element={<DeleteVenuePage />} />
 
                     {/* Events */}
                     {/* <Route path="/event-venue" element={<EventMainPage />} />
