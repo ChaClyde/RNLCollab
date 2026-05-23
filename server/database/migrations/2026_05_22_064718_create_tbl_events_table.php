@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_events', function (Blueprint $table) {
-            $table->id();
+            $table->id(event_id);
+            $table->string(activity);
+            $table->string(purpose);
+
+            $table->unsignedBigInteger('department_id');
+            $table->tinyInteger('is_deleted')->default(false);
+
             $table->timestamps();
         });
     }

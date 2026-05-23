@@ -41,7 +41,10 @@ Route::controller(UserController::class)->prefix('/users')->group(function() {
 // Venue
 Route::controller(VenueController::class)->prefix('/venue')->group(function() {
     Route::get('/loadVenue', 'loadVenue'); 
+    Route:: get('/getVenue/{venueId}', 'getVenue');
     Route::post('/storeVenue', 'storeVenue');
+    Route::put('/updateVenue/{venue}', 'updateVenue');
+    Route::put('/destroyVenue/{venue}', 'destroyVenue');
 });
 
 // Route::get('/user', function (Request $request) {
