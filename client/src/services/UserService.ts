@@ -1,4 +1,3 @@
-import { Axios } from "axios";
 import AxiosInstance from "./AxiosInstance";
 
 const UserService = {

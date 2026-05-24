@@ -51,7 +51,7 @@ const AppSidebar = () => {
                 // },
                 {
                     text: "All Events",
-                    path: "/all-events",
+                    path: "/events",
                 },
             ],
         },

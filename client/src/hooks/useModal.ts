@@ -1,21 +1,50 @@
-import { useCallback, useState } from "react"
-import type { UserColumns } from "../interfaces/UserInterface";
+// import { useCallback, useState } from "react"
+// import type { UserColumns } from "../interfaces/UserInterface";
 
-export const useModal = (initialState: boolean) => {
+// export const useModal = (initialState: boolean) => {
+//     const [isOpen, setIsOpen] = useState(initialState);
+//     const [selectedUser, setSelectedUser] = useState<UserColumns | null>(null);
+
+//     const openModal = useCallback((user?: UserColumns | null) => {
+//         setSelectedUser(user || null)
+//         setIsOpen(true)
+//     }, []);
+
+//     const closeModal = useCallback(() => {
+//         setSelectedUser(null)
+//         setIsOpen(false)
+//     }, [])
+
+//     const toggleModal = useCallback(() => setIsOpen((prev) => !prev), [])
+
+//     return { isOpen, selectedUser, openModal, closeModal, toggleModal };
+// };
+
+import { useCallback, useState } from "react";
+
+export const useModal = <T,>(initialState: boolean) => {
     const [isOpen, setIsOpen] = useState(initialState);
-    const [selectedUser, setSelectedUser] = useState<UserColumns | null>(null);
+    const [selectedItem, setSelectedItem] = useState<T | null>(null);
 
-    const openModal = useCallback((user?: UserColumns | null) => {
-        setSelectedUser(user || null)
-        setIsOpen(true)
+    const openModal = useCallback((item?: T | null) => {
+        setSelectedItem(item ?? null);
+        setIsOpen(true);
     }, []);
 
     const closeModal = useCallback(() => {
-        setSelectedUser(null)
-        setIsOpen(false)
-    }, [])
+        setSelectedItem(null);
+        setIsOpen(false);
+    }, []);
 
-    const toggleModal = useCallback(() => setIsOpen((prev) => !prev), [])
+    const toggleModal = useCallback(() => {
+        setIsOpen((prev) => !prev);
+    }, []);
 
-    return { isOpen, selectedUser, openModal, closeModal, toggleModal };
+    return {
+        isOpen,
+        selectedItem,
+        openModal,
+        closeModal,
+        toggleModal
+    };
 };

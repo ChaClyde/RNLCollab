@@ -42,8 +42,8 @@ const VenueList: FC<VenueListProps> = ({refreshKey}) => {
                     <Table>
                         <TableHeader className="border-b border-gray-200 bg-gray-950 sticky top-0 text-white text-xs">
                             <TableCell isHeader className="px-5 py-3 font-medium text-center">N0.</TableCell>
-                            <TableCell isHeader className="px-5 py-3 font-medium text-start">VENUE</TableCell>
-                            <TableCell isHeader className="px-5 py-3 font-medium text-staer">DESCRIPTION</TableCell>
+                            <TableCell isHeader className="px-5 py-3 font-medium text-center">VENUE</TableCell>
+                            <TableCell isHeader className="px-5 py-3 font-medium text-start">DESCRIPTION</TableCell>
                             {/* <TableCell isHeader className="px-5 py-3 font-medium text-center">STATUS</TableCell> */}
                             <TableCell isHeader className="px-5 py-3 font-medium text-start">ACTIONS</TableCell>
                         </TableHeader>
@@ -57,7 +57,7 @@ const VenueList: FC<VenueListProps> = ({refreshKey}) => {
                           ) : venues.map((venue, index) => (
                               <TableRow className="hover:bg-gray-100" key={index}>
                                   <TableCell className="px-4 py-3 text-center">{index + 1}</TableCell>
-                                  <TableCell className="px-4 py-3 text-start">{venue.venue_name}</TableCell>
+                                  <TableCell className="px-4 py-3 text-center">{venue.venue_name}</TableCell>
                                   <TableCell className="px-4 py-3 text-start">{venue.venue_description}</TableCell>
                                   <TableCell className="px-4 py-3 text-center">
                                       <div className="flex justify-start text-start items-start gap-4">
