@@ -6,6 +6,7 @@ use App\Http\Controllers\API\DepartmentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\VenueController;
+use App\Http\Controllers\API\EventController;
 
 // Role Route
 Route::controller(RoleController::class)->prefix('/role')->group(function() {
@@ -45,6 +46,14 @@ Route::controller(VenueController::class)->prefix('/venue')->group(function() {
     Route::post('/storeVenue', 'storeVenue');
     Route::put('/updateVenue/{venue}', 'updateVenue');
     Route::put('/destroyVenue/{venue}', 'destroyVenue');
+});
+
+// Events
+Route::controller(EventController::class)->prefix('/event')->group(function() {
+    Route::get('/loadEvent', 'loadEvent');
+    Route::post('/storeEvent', 'storeEvent');
+    Route::put('/updateEvent/{event}', 'updateEvent');
+    Route::put('/destroyEvent/{event}', 'destroyEvent');
 });
 
 // Route::get('/user', function (Request $request) {
