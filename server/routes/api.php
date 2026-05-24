@@ -54,6 +54,11 @@ Route::controller(EventController::class)->prefix('/event')->group(function() {
     Route::post('/storeEvent', 'storeEvent');
     Route::put('/updateEvent/{event}', 'updateEvent');
     Route::put('/destroyEvent/{event}', 'destroyEvent');
+
+    // TRASH
+    Route::get('/loadTrashEvent', 'loadTrashEvent');
+    Route::put('/restoreEvent/{event}', 'restoreEvent');
+    Route::delete('/forceDeleteEvent/{event}', 'forceDeleteEvent');
 });
 
 // Route::get('/user', function (Request $request) {
