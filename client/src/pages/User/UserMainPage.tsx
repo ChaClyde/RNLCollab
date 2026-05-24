@@ -17,14 +17,14 @@ const UserMainPage = () => {
 
   const {
     isOpen: isEditUserFormModal,
-    selectedUser: selectedUserForEdit,
+    selectedItem: selectedUserForEdit,
     openModal: openEditUserFormModal,
     closeModal: closeEditUserFormModal
   } = useModal(false);
 
   const {
     isOpen: isDeleteUserFormModalOpen,
-    selectedUser: selectedUserForDelete,
+    selectedItem: selectedUserForDelete,
     openModal: openDeleteUserFormModal,
     closeModal: closeDeleteUserFormModal
   } = useModal(false);
@@ -63,7 +63,7 @@ const UserMainPage = () => {
         isOpen={isEditUserFormModal}
         onClose={closeEditUserFormModal}
       />
-
+  
       <DeleteUserFormModal
       user={selectedUserForDelete}
       onDeleteUser={showToastMessage}
