@@ -63,6 +63,43 @@ const EventService = {
             throw error;
         }
     },
+    loadTrashEvent: async () => {
+        try {
+            const response = await AxiosInstance.get(
+                "/event/loadTrashEvent"
+            );
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    },
+    restoreEvent: async (
+        eventId: string | number
+    ) => {
+        try {
+            const response = await AxiosInstance.put(
+                `/event/restoreEvent/${eventId}`
+            );
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    },
+    forceDeleteEvent: async (
+        eventId: string | number
+    ) => {
+        try {
+            const response = await AxiosInstance.delete(
+                `/event/forceDeleteEvent/${eventId}`
+            );
+
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    },
 }
 
 export default EventService;

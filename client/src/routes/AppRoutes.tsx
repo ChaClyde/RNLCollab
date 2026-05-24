@@ -12,6 +12,7 @@ import VenuePage from "../pages/Venue/VenuePage"
 import EditVenuePage from "../pages/Venue/EditVenuePage"
 import DeleteVenuePage from "../pages/Venue/DeleteVenuePage"
 import EventMainPage from "../pages/Events/EventMainPage"
+import TrashEventPage from "../pages/Trash/TrashEventPage"
 
 
 const AppRoutes = () => {
@@ -49,6 +50,8 @@ const AppRoutes = () => {
 
                     {/* Trash */}
                     <Route path="/user-trash" element={<TrashMainPage />} />
+                    <Route path="/event-trash" element={<TrashEventPage />} />
+
                 </Route>
             </Routes>
         </>
